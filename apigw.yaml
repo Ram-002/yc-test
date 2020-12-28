@@ -1,0 +1,21 @@
+openapi: 3.0.0
+info:
+  title: Sample API
+  version: 1.0.0
+servers:
+  - url: https://d5d3n90k83mavus3rmnk.apigw.yandexcloud.net
+paths:
+  /:
+    get:
+      x-yc-apigateway-integration:
+        type: cloud_functions
+        function_id: d4e03f0eh5f3cu9c23jr
+        service_account_id: ajersfeaf1t6ocgh5995
+#      responses:
+#        '200':
+#          description: png image
+#          content:
+#            image/png:
+#              schema:
+#                format: binary
+#                type: string

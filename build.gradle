@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+    id 'war'
+    id 'com.github.sahara3.tomcat-runner' version '0.2.1'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "javax.servlet:javax.servlet-api:4.0.1"
+}
+
+tomcat {
+    version = 9.0
+    port = 8080
+    webapp (project) {
+        contextPath = ''
+    }
+}
+
+task buildZip(type: Zip) {
+    from compileJava
+    from processResources
+//    from configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    from configurations.runtimeClasspath
+}
